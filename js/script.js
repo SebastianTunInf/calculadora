@@ -16,9 +16,44 @@ function agregar(valor) {
         numeroAnterior = pantalla.value
         operadorActual = valor
         reiniciarPantalla = true
-    } else {
+    } else if (['-'].includes(valor)) {
+        if(operadorActual != null) {
+            calcular();
+        }
+        numeroAnterior = pantalla.value
+        operadorActual = valor
+        reiniciarPantalla = true
+    } else if (['*'].includes(valor)) {
+        if(operadorActual != null) {
+            calcular();
+        }
+        numeroAnterior = pantalla.value
+        operadorActual = valor
+        reiniciarPantalla = true
+    } else if (['/'].includes(valor)) {
+        if(operadorActual != null) {
+            calcular();
+        }
+        numeroAnterior = pantalla.value
+        operadorActual = valor
+        reiniciarPantalla = true
+    }  else if (['?'].includes(valor)) {
+        if (operadorActual != null) {
+            calcular()
+            pantalla.value = "Error"
+        }  
+        numeroAnterior = pantalla.value
+        operadorActual = valor
+        calcular()
+        reiniciarPantalla = true
+    } else
+    {
         pantalla.value += valor
     }
+}
+
+function borrar() {
+    pantalla.value = pantalla.value.slice(0, -1)
 }
 
 function limpiar() {
@@ -56,6 +91,9 @@ function calcular() {
         case '/':
             resultado = numero1 / numero2
             break
+        case '?':
+            resultado = Math.sqrt(numero1)
+            break
     }
 
     resultado = Math.round(resultado * 100000000) / 100000000
@@ -77,6 +115,6 @@ document.addEventListener('keydown', (event) => {
     } else if (key === 'Escape') {
         limpiar()
     } else if (key === 'Backspace') {
-        display.value = display.value.slice(0, -1)
+        pantalla.value = pantalla.value.slice(0, -1)
     }
 })
