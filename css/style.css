@@ -72,3 +72,12 @@ button:hover {
 .igual:hover {
     background-color: #cec8c8;
 }
+
+.quitar {
+    background:#af4545;
+    color: white;
+}
+
+.quitar:hover {
+    background: #8a3535;
+}
